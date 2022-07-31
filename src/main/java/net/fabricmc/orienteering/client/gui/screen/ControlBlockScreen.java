@@ -14,7 +14,6 @@ import net.minecraft.text.TranslatableText;
 
 public class ControlBlockScreen extends Screen {
     private CyclingButtonWidget<Object> modeButton;
-    private CyclingButtonWidget<Boolean> airButton;
     protected TextFieldWidget controlCodeTextField;
     protected ButtonWidget doneButton;
     protected ButtonWidget cancelButton;
@@ -47,10 +46,6 @@ public class ControlBlockScreen extends Screen {
                         .initially(this.blockEntity.getControlType())
                         .build(this.width / 2 - 100 - 4, height / 2 - 60, 100, 20,
                                 new TranslatableText("advMode.mode")));
-        this.airButton = this
-                .addDrawableChild(CyclingButtonWidget.onOffBuilder(true)
-                        .initially(this.blockEntity.getIsAirOn())
-                        .build(this.width / 2 - 100 - 4, height / 2 - 36, 100, 20, Text.of("SI AIR+")));
         this.controlCodeTextField = new TextFieldWidget(this.textRenderer, this.width / 2 + 4, this.height / 2 - 40,
                 26, 20,
                 (Text) new TranslatableText("advMode.command"));
@@ -69,7 +64,6 @@ public class ControlBlockScreen extends Screen {
     protected void commitAndClose() {
         this.blockEntity.setControlType(ControlBlockBlockEntity.Type.valueOf(this.modeButton.getValue().toString()));
         this.blockEntity.setControlCode(Integer.parseInt(this.controlCodeTextField.getText()));
-        this.blockEntity.setAirIsOn(this.airButton.getValue());
         this.client.setScreen(null);
     }
 

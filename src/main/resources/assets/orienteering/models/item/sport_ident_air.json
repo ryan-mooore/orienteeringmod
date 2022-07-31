@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "orienteering:item/sport_ident_air"
+    }
+}
