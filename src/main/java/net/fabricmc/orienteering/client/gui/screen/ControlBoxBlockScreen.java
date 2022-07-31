@@ -1,6 +1,6 @@
 package net.fabricmc.orienteering.client.gui.screen;
 
-import net.fabricmc.orienteering.block.entity.ControlBlockBlockEntity;
+import net.fabricmc.orienteering.block.entity.ControlBoxBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ScreenTexts;
@@ -12,14 +12,14 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
-public class ControlBlockScreen extends Screen {
+public class ControlBoxBlockScreen extends Screen {
     private CyclingButtonWidget<Object> modeButton;
     protected TextFieldWidget controlCodeTextField;
     protected ButtonWidget doneButton;
     protected ButtonWidget cancelButton;
-    private ControlBlockBlockEntity blockEntity;
+    private ControlBoxBlockEntity blockEntity;
 
-    public ControlBlockScreen(ControlBlockBlockEntity blockEntity) {
+    public ControlBoxBlockScreen(ControlBoxBlockEntity blockEntity) {
         super(NarratorManager.EMPTY);
         this.blockEntity = blockEntity;
     }
@@ -41,7 +41,7 @@ public class ControlBlockScreen extends Screen {
                 .addDrawableChild(CyclingButtonWidget.builder(value -> {
                     return Text.of(value.toString());
                 })
-                        .values((Object[]) ControlBlockBlockEntity.Type.values())
+                        .values((Object[]) ControlBoxBlockEntity.Type.values())
                         .omitKeyText()
                         .initially(this.blockEntity.getControlType())
                         .build(this.width / 2 - 100 - 4, height / 2 - 60, 100, 20,
@@ -62,13 +62,13 @@ public class ControlBlockScreen extends Screen {
     }
 
     protected void commitAndClose() {
-        this.blockEntity.setControlType(ControlBlockBlockEntity.Type.valueOf(this.modeButton.getValue().toString()));
+        this.blockEntity.setControlType(ControlBoxBlockEntity.Type.valueOf(this.modeButton.getValue().toString()));
         this.blockEntity.setControlCode(Integer.parseInt(this.controlCodeTextField.getText()));
         this.client.setScreen(null);
     }
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        ControlBlockScreen.drawTextWithShadow(matrices, this.textRenderer, Text.of("Control Code"),
+        ControlBoxBlockScreen.drawTextWithShadow(matrices, this.textRenderer, Text.of("Control Code"),
                 this.width / 2 + 4, this.height / 2 - 55, 0xA0A0A0);
         this.controlCodeTextField.render(matrices, mouseX, mouseY, delta);
         super.render(matrices, mouseX, mouseY, delta);

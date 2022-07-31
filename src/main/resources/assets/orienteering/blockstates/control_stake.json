@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "orienteering:block/control_stake"
+        }
+    }
+}

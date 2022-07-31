@@ -7,9 +7,10 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.fabricmc.orienteering.block.ControlBlock;
+import net.fabricmc.orienteering.block.ControlBoxBlock;
+import net.fabricmc.orienteering.block.ControlStakeBlock;
 import net.fabricmc.orienteering.block.StartBeeperBlock;
-import net.fabricmc.orienteering.block.entity.ControlBlockBlockEntity;
+import net.fabricmc.orienteering.block.entity.ControlBoxBlockEntity;
 import net.fabricmc.orienteering.block.entity.StartBeeperBlockEntity;
 import net.fabricmc.orienteering.item.SportIdentAirItem;
 import net.fabricmc.orienteering.item.SportIdentItem;
@@ -25,10 +26,17 @@ import net.minecraft.util.registry.Registry;
 public class Orienteering implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("orienteering");
 
-	// control block
-	public static final Block CONTROL_BLOCK = new ControlBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final BlockEntityType<ControlBlockBlockEntity> CONTROL_BLOCK_ENTITY_TYPE = FabricBlockEntityTypeBuilder
-			.create(ControlBlockBlockEntity::new, CONTROL_BLOCK).build(null);
+	// control box block
+	public static final Block CONTROL_BOX_BLOCK = new ControlBoxBlock(
+			FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	public static final BlockEntityType<ControlBoxBlockEntity> CONTROL_BOX_BLOCK_ENTITY_TYPE = FabricBlockEntityTypeBuilder
+			.create(ControlBoxBlockEntity::new, CONTROL_BOX_BLOCK).build(null);
+
+	// control stake block
+	public static final Block CONTROL_STAKE_BLOCK = new ControlStakeBlock(
+			FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	public static final BlockEntityType<ControlBoxBlockEntity> CCONTROL_STAKE_BLOCK_ENTITY_TYPE = FabricBlockEntityTypeBuilder
+			.create(ControlBoxBlockEntity::new, CONTROL_STAKE_BLOCK).build(null);
 
 	// start beeper block
 	public static final Block START_BEEPER_BLOCK = new StartBeeperBlock(
@@ -43,12 +51,19 @@ public class Orienteering implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// control block
-		Registry.register(Registry.ITEM, new Identifier("orienteering", "control"),
-				new BlockItem(CONTROL_BLOCK, new FabricItemSettings().group(ItemGroup.MISC)));
-		Registry.register(Registry.BLOCK, new Identifier("orienteering", "control"), CONTROL_BLOCK);
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("orienteering", "control"),
-				CONTROL_BLOCK_ENTITY_TYPE);
+		// control box block
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "control_box"),
+				new BlockItem(CONTROL_BOX_BLOCK, new FabricItemSettings().group(ItemGroup.MISC)));
+		Registry.register(Registry.BLOCK, new Identifier("orienteering", "control_box"), CONTROL_BOX_BLOCK);
+		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("orienteering", "control_box"),
+				CONTROL_BOX_BLOCK_ENTITY_TYPE);
+
+		// control stake block
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "control_stake"),
+				new BlockItem(CONTROL_STAKE_BLOCK, new FabricItemSettings().group(ItemGroup.MISC)));
+		Registry.register(Registry.BLOCK, new Identifier("orienteering", "control_stake"), CONTROL_STAKE_BLOCK);
+		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("orienteering", "control_stake"),
+				CCONTROL_STAKE_BLOCK_ENTITY_TYPE);
 
 		// start beeper block
 		Registry.register(Registry.ITEM, new Identifier("orienteering", "start_beeper"),

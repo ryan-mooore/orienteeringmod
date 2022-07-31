@@ -1,24 +1,24 @@
 package net.fabricmc.orienteering.block.entity;
 
 import net.fabricmc.orienteering.Orienteering;
-import net.fabricmc.orienteering.block.ControlBlock;
+import net.fabricmc.orienteering.block.ControlBoxBlock;
 import net.fabricmc.orienteering.item.AbstractSportIdentItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ControlBlockBlockEntity extends BlockEntity {
+public class ControlBoxBlockEntity extends BlockEntity {
 
     private int controlCode = 30;
     private static final int airRange = 2;
     private Type controlType = Type.CONTROL;
 
-    public ControlBlockBlockEntity(BlockPos pos, BlockState state) {
-        super(Orienteering.CONTROL_BLOCK_ENTITY_TYPE, pos, state);
+    public ControlBoxBlockEntity(BlockPos pos, BlockState state) {
+        super(Orienteering.CONTROL_BOX_BLOCK_ENTITY_TYPE, pos, state);
     }
 
     public int getControlCode() {
@@ -39,13 +39,13 @@ public class ControlBlockBlockEntity extends BlockEntity {
         this.markDirty();
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, ControlBlockBlockEntity blockEntity) {
+    public static void tick(World world, BlockPos pos, BlockState state, ControlBoxBlockEntity blockEntity) {
         PlayerEntity closestPlayer = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), airRange,
-                ControlBlock.isHoldingSportIdentAir);
+                ControlBoxBlock.isHoldingSportIdentAir);
         if (closestPlayer != null) {
-            Item activeItem = closestPlayer.getStackInHand(closestPlayer.getActiveHand()).getItem();
-            if (activeItem instanceof AbstractSportIdentItem) {
-                ((AbstractSportIdentItem) activeItem).punch(blockEntity);
+            ItemStack activeItemStack = closestPlayer.getStackInHand(closestPlayer.getActiveHand());
+            if (activeItemStack.getItem() instanceof AbstractSportIdentItem) {
+                AbstractSportIdentItem.punch(activeItemStack, blockEntity);
             }
         }
     }
