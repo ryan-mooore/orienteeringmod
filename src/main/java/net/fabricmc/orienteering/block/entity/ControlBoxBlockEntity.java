@@ -3,6 +3,7 @@ package net.fabricmc.orienteering.block.entity;
 import net.fabricmc.orienteering.Orienteering;
 import net.fabricmc.orienteering.block.ControlBoxBlock;
 import net.fabricmc.orienteering.item.AbstractSportIdentItem;
+import net.fabricmc.orienteering.item.SportIdentAirItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,7 +42,7 @@ public class ControlBoxBlockEntity extends BlockEntity {
 
     public static void tick(World world, BlockPos pos, BlockState state, ControlBoxBlockEntity blockEntity) {
         PlayerEntity closestPlayer = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), airRange,
-                ControlBoxBlock.isHoldingSportIdentAir);
+                entity -> ControlBoxBlock.isHoldingSportIdentOfType(entity, SportIdentAirItem.class));
         if (closestPlayer != null) {
             ItemStack activeItemStack = closestPlayer.getStackInHand(closestPlayer.getActiveHand());
             if (activeItemStack.getItem() instanceof AbstractSportIdentItem) {

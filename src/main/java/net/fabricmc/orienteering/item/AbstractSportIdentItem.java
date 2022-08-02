@@ -6,8 +6,19 @@ import net.minecraft.item.ItemStack;
 
 public class AbstractSportIdentItem extends Item {
 
-    public AbstractSportIdentItem(Settings settings) {
+    public AbstractSportIdentItem(Color color, Settings settings) {
         super(settings);
+    }
+
+    public static enum Color {
+        RED,
+        ORANGE,
+        YELLOW,
+        GREEN,
+        BLUE,
+        PURPLE,
+        BLACK,
+        PINK
     }
 
     public static void punch(ItemStack sportIdent, ControlBoxBlockEntity control) {

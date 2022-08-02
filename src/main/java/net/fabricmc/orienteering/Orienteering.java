@@ -12,6 +12,7 @@ import net.fabricmc.orienteering.block.ControlStakeBlock;
 import net.fabricmc.orienteering.block.StartBeeperBlock;
 import net.fabricmc.orienteering.block.entity.ControlBoxBlockEntity;
 import net.fabricmc.orienteering.block.entity.StartBeeperBlockEntity;
+import net.fabricmc.orienteering.item.AbstractSportIdentItem;
 import net.fabricmc.orienteering.item.SportIdentAirItem;
 import net.fabricmc.orienteering.item.SportIdentItem;
 import net.minecraft.block.Block;
@@ -45,8 +46,11 @@ public class Orienteering implements ModInitializer {
 			.create(StartBeeperBlockEntity::new, START_BEEPER_BLOCK).build();
 
 	// sportident items
-	public static final Item SPORT_IDENT_ITEM = new SportIdentItem(new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(
+	public static final Item BLACK_SPORT_IDENT_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.BLACK,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item RED_SPORT_IDENT_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.RED,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item BLUE_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(AbstractSportIdentItem.Color.BLUE,
 			new FabricItemSettings().group(ItemGroup.MISC));
 
 	@Override
@@ -73,8 +77,10 @@ public class Orienteering implements ModInitializer {
 				START_BEEPER_BLOCK_ENTITY_TYPE);
 
 		// sportident items
-		Registry.register(Registry.ITEM, new Identifier("orienteering", "sport_ident"), SPORT_IDENT_ITEM);
-		Registry.register(Registry.ITEM, new Identifier("orienteering", "sport_ident_air"), SPORT_IDENT_AIR_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "black_sport_ident"), BLACK_SPORT_IDENT_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "red_sport_ident"), RED_SPORT_IDENT_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "blue_sport_ident_air"),
+				BLUE_SPORT_IDENT_AIR_ITEM);
 
 		LOGGER.info("ORIENTEERING loaded successfully.");
 	}

@@ -2,8 +2,8 @@ package net.fabricmc.orienteering.item;
 
 public class SportIdentItem extends AbstractSportIdentItem {
 
-    public SportIdentItem(Settings settings) {
-        super(settings);
+    public SportIdentItem(Color color, Settings settings) {
+        super(color, settings);
     }
 
 }
