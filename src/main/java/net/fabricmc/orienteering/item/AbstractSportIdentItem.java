@@ -16,9 +16,10 @@ public class AbstractSportIdentItem extends Item {
         YELLOW,
         GREEN,
         BLUE,
-        PURPLE,
         BLACK,
-        PINK
+        LIGHT_BLUE,
+        LIGHT_GREEN,
+        WHITE,
     }
 
     public static void punch(ItemStack sportIdent, ControlBoxBlockEntity control) {

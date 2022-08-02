@@ -46,11 +46,35 @@ public class Orienteering implements ModInitializer {
 			.create(StartBeeperBlockEntity::new, START_BEEPER_BLOCK).build();
 
 	// sportident items
-	public static final Item BLACK_SPORT_IDENT_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.BLACK,
+	public static final Item RED_SPORT_IDENT_9_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.RED,
 			new FabricItemSettings().group(ItemGroup.MISC));
-	public static final Item RED_SPORT_IDENT_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.RED,
+	public static final Item LIGHT_BLUE_SPORT_IDENT_9_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.LIGHT_BLUE,
 			new FabricItemSettings().group(ItemGroup.MISC));
+
+	public static final Item RED_SPORT_IDENT_10_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.RED,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item LIGHT_BLUE_SPORT_IDENT_10_ITEM = new SportIdentItem(
+			AbstractSportIdentItem.Color.LIGHT_BLUE,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item YELLOW_SPORT_IDENT_10_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.YELLOW,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item GREEN_SPORT_IDENT_10_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.GREEN,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item WHITE_SPORT_IDENT_10_ITEM = new SportIdentItem(AbstractSportIdentItem.Color.WHITE,
+			new FabricItemSettings().group(ItemGroup.MISC));
+
 	public static final Item BLUE_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(AbstractSportIdentItem.Color.BLUE,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item BLACK_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(AbstractSportIdentItem.Color.BLACK,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item YELLOW_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(AbstractSportIdentItem.Color.YELLOW,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item ORANGE_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(AbstractSportIdentItem.Color.ORANGE,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item LIGHT_GREEN_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(
+			AbstractSportIdentItem.Color.LIGHT_GREEN,
+			new FabricItemSettings().group(ItemGroup.MISC));
+	public static final Item RED_SPORT_IDENT_AIR_ITEM = new SportIdentAirItem(AbstractSportIdentItem.Color.RED,
 			new FabricItemSettings().group(ItemGroup.MISC));
 
 	@Override
@@ -77,10 +101,33 @@ public class Orienteering implements ModInitializer {
 				START_BEEPER_BLOCK_ENTITY_TYPE);
 
 		// sportident items
-		Registry.register(Registry.ITEM, new Identifier("orienteering", "black_sport_ident"), BLACK_SPORT_IDENT_ITEM);
-		Registry.register(Registry.ITEM, new Identifier("orienteering", "red_sport_ident"), RED_SPORT_IDENT_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "red_sport_ident_9"), RED_SPORT_IDENT_9_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "light_blue_sport_ident_9"),
+				LIGHT_BLUE_SPORT_IDENT_9_ITEM);
+
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "red_sport_ident_10"),
+				RED_SPORT_IDENT_10_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "yellow_sport_ident_10"),
+				YELLOW_SPORT_IDENT_10_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "green_sport_ident_10"),
+				GREEN_SPORT_IDENT_10_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "light_blue_sport_ident_10"),
+				LIGHT_BLUE_SPORT_IDENT_10_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "white_sport_ident_10"),
+				WHITE_SPORT_IDENT_10_ITEM);
+
 		Registry.register(Registry.ITEM, new Identifier("orienteering", "blue_sport_ident_air"),
 				BLUE_SPORT_IDENT_AIR_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "black_sport_ident_air"),
+				BLACK_SPORT_IDENT_AIR_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "red_sport_ident_air"),
+				RED_SPORT_IDENT_AIR_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "light_green_sport_ident_air"),
+				LIGHT_GREEN_SPORT_IDENT_AIR_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "yellow_sport_ident_air"),
+				YELLOW_SPORT_IDENT_AIR_ITEM);
+		Registry.register(Registry.ITEM, new Identifier("orienteering", "orange_sport_ident_air"),
+				ORANGE_SPORT_IDENT_AIR_ITEM);
 
 		LOGGER.info("ORIENTEERING loaded successfully.");
 	}
